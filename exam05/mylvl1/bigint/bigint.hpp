@@ -11,24 +11,24 @@ class bigint {
         std::string valeu;
 
         std::string addStrings(const std::string &num1, const std::string &num2) const {
-	    std::string result;
-	    int carry = 0;
-	    int i = num1.size() - 1;
-	    int j = num2.size() - 1;
+	        std::string result;
+	        int carry = 0;
+	        int i = num1.size() - 1;
+	        int j = num2.size() - 1;
 
-	    while (i >= 0 || j >= 0 || carry)
-	    {
-		    int sum = carry;
-		    if (i >= 0)
-		    	sum += num1[i--] - '0';
-		    if (j >= 0)
-		    	sum += num2[j--] - '0';
-		    result += (sum % 10) + '0';
-		    carry = sum / 10;
-	    }
-	    std::reverse(result.begin(), result.end());
-	    return result;
-    }
+	        while (i >= 0 || j >= 0 || carry)
+	        {
+		        int sum = carry;
+		        if (i >= 0)
+		        	sum += num1[i--] - '0';
+		        if (j >= 0)
+		        	sum += num2[j--] - '0';
+		        result += (sum % 10) + '0';
+		        carry = sum / 10;
+	        }
+	        std::reverse(result.begin(), result.end());
+	        return result;
+        }
 
         unsigned long long stringToULL(const std::string &str) const {
             char *end = NULL;
