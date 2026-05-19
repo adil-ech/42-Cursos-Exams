@@ -30,7 +30,7 @@ class bigint {
         unsigned long long strtoULL(const std::string &str) const {
             char *end = NULL;
             unsigned long long res = std::strtoul(str.c_str(), &end, 0);
-            if (*end == '\0' || str[0] == '0')
+            if (*end != '\0' || str[0] == '0')
                 throw std::invalid_argument("Invalid Number format");
             return res;
         }
@@ -46,7 +46,9 @@ class bigint {
             ss << num;
             value = ss.str();
         }
-        bigint(const std::string &str) : value(str) {}
+        bigint(const std::string &str) : value(str) {
+            removeLeadingZeros();
+        }
         bigint(const bigint &obj) : value(obj.value) {}
         bigint &operator=(const bigint &obj) {
             if (this != &obj)
@@ -128,10 +130,10 @@ class bigint {
             return value > obj.value;
         }
         bool operator<=(const bigint &obj) const{
-            return !(*this >= obj);
+            return !(*this > obj);
         }
         bool operator>=(const bigint &obj) const{
-            return !(*this <= obj);
+            return !(*this < obj);
         }
 
         bool operator==(const bigint &obj) const {

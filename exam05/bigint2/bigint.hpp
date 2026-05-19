@@ -139,10 +139,10 @@ class bigint {
             return valeu > shift.valeu;
         }
         bool operator<=(const bigint &shift) const {
-           return !(*this >= shift);
+           return !(*this > shift);
         }
         bool operator>=(const bigint &shift) const {
-            return !(*this <= shift);
+            return !(*this < shift);
         }
         bool operator==(const bigint &shift) const {
             if (valeu == shift.valeu)

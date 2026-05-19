@@ -3,11 +3,11 @@
 #include "searchable_tree_bag.hpp"
 
 class set {
-    private:
+    private :
         searchable_bag &bag;
-    public:
-        set(searchable_bag &oth) : bag(oth) {};
-        ~set () { bag.clear(); }
+    public : 
+        set(searchable_bag &bag) : bag(bag) {}
+        ~set(){bag.clear();}
         void insert(int val) {
             if (!bag.has(val))
                 bag.insert(val);
@@ -24,10 +24,10 @@ class set {
         void print() const {
             bag.print();
         }
-        searchable_bag &get_bag() const{
-            return bag; 
+        searchable_bag &get_bag() {
+            return bag;
         }
-        void clear() const{
+        void clear() const {
             bag.clear();
         }
 };
